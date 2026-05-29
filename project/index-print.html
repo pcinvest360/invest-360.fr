@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PC Invest 360 — Conseil en gestion de patrimoine | Salon-de-Provence</title>
+  <meta name="description" content="Cabinet de conseil en gestion de patrimoine basé à Salon-de-Provence. Une approche 360° pour structurer, développer et transmettre votre patrimoine." />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* Force all reveal animations to be visible */
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+
+    /* Non-sticky header for print preview */
+    .site-header { position: static !important; }
+    .nav-toggle { display: none !important; }
+
+    /* Screen tweaks (preview before printing) */
+    @media screen {
+      body { background: #e9e6df; }
+      .page-print {
+        width: 210mm;
+        margin: 24px auto;
+        background: var(--c-bg);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 12mm 10mm;
+    }
+
+    @media print {
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        transition: none !important;
+        animation: none !important;
+      }
+
+      html, body {
+        background: var(--c-bg) !important;
+        font-size: 10.5pt;
+      }
+
+      .container { max-width: none; padding: 0 6mm; }
+      .container-narrow { max-width: 160mm; padding: 0 6mm; }
+
+      /* Header: condensed, no nav/CTAs, no border interactions */
+      .site-header {
+        position: static !important;
+        background: transparent !important;
+        border-bottom: 1px solid var(--c-line) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+      .site-header__inner { height: auto !important; padding: 8mm 0 6mm; }
+      .brand img { height: 36px !important; }
+      .nav, .nav-toggle, .nav-cta { display: none !important; }
+
+      /* Hero compaction */
+      .hero { padding: 8mm 0 6mm !important; }
+      .hero::before { display: none !important; }
+      .hero__grid {
+        display: grid !important;
+        grid-template-columns: 1.15fr 1fr !important;
+        gap: 10mm !important;
+        align-items: center !important;
+      }
+      .hero__copy .eyebrow { font-size: 9pt; }
+      .h-display { font-size: 28pt !important; line-height: 1.1 !important; margin: 4mm 0 3mm; }
+      .lede { font-size: 11pt !important; line-height: 1.45 !important; }
+      .hero__ctas { display: none !important; }
+      .hero__meta { gap: 8mm !important; margin-top: 6mm !important; }
+      .hero__meta-item .num { font-size: 16pt !important; }
+      .hero__meta-item .lbl { font-size: 8.5pt !important; }
+      .hero__visual {
+        aspect-ratio: 4 / 5 !important;
+        border-radius: 6px !important;
+        break-inside: avoid;
+      }
+      .hero__visual img { height: 100% !important; object-fit: cover !important; }
+      .hero__badge { display: none !important; }
+      .frame-deco { display: none !important; }
+
+      /* Trust strip */
+      .trust-strip { break-inside: avoid; padding: 4mm 0 !important; }
+      .trust-strip__inner { gap: 8mm !important; flex-wrap: wrap !important; }
+      .trust-item .label { font-size: 8pt !important; }
+      .trust-item .value { font-size: 9.5pt !important; }
+
+      /* Section sizing */
+      section { padding: 10mm 0 !important; }
+      .section-head { margin-bottom: 6mm !important; }
+      .section-head .eyebrow { font-size: 9pt; }
+      .h-1 { font-size: 20pt !important; line-height: 1.15 !important; margin-bottom: 3mm; }
+      .section-head p { font-size: 10.5pt !important; }
+
+      /* Steps */
+      .steps {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 6mm !important;
+      }
+      .step { break-inside: avoid; padding-top: 8mm !important; }
+      .step h3 { font-size: 12pt !important; margin-bottom: 2mm; }
+      .step p { font-size: 9.5pt !important; }
+      .step::before { font-size: 14pt !important; top: -6px !important; }
+
+      /* Pillars - 2x2 grid for print */
+      .pillars {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 5mm !important;
+      }
+      .pillar {
+        break-inside: avoid;
+        padding: 6mm !important;
+        box-shadow: none !important;
+      }
+      .pillar:hover { transform: none !important; }
+      .pillar__icon { width: 40px !important; height: 40px !important; margin-bottom: 4mm !important; }
+      .pillar__icon svg { width: 22px; height: 22px; }
+      .pillar h3 { font-size: 13pt !important; margin-bottom: 2mm; }
+      .pillar p { font-size: 9.5pt !important; line-height: 1.45 !important; }
+      .pillar__link { font-size: 9pt !important; }
+
+      /* Quote */
+      .quote { padding: 12mm 0 !important; break-inside: avoid; }
+      .quote blockquote { font-size: 16pt !important; line-height: 1.35 !important; }
+
+      /* CTA banner */
+      .cta-banner {
+        padding: 10mm !important;
+        break-inside: avoid;
+        gap: 8mm !important;
+      }
+      .cta-banner h2 { font-size: 18pt !important; }
+      .cta-banner p { font-size: 10pt !important; }
+      .cta-banner__actions { display: none !important; }
+      .cta-banner::after { display: none !important; }
+
+      /* Footer */
+      .site-footer {
+        padding: 10mm 0 6mm !important;
+        break-inside: avoid;
+      }
+      .footer-grid {
+        grid-template-columns: 1.4fr 1fr 1fr 1fr !important;
+        gap: 8mm !important;
+      }
+      .footer-brand img { height: 32px !important; }
+      .footer-brand p { font-size: 9pt !important; }
+      .footer-grid h4 { font-size: 10pt !important; margin-bottom: 3mm; }
+      .footer-list li, .footer-list a { font-size: 9pt !important; }
+      .footer-bar { margin-top: 6mm !important; padding-top: 4mm !important; font-size: 8.5pt !important; }
+
+      /* Page breaks between major sections */
+      .hero { page-break-after: avoid; }
+      .approach, .quote, .site-footer { break-inside: avoid; }
+
+      /* Avoid orphan headings */
+      h1, h2, h3, h4 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====================== HEADER ====================== -->
+  <header class="site-header" data-screen-label="header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="Accueil PC Invest 360">
+        <img src="assets/logo.png" alt="PC Invest 360" />
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+      </button>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="solutions.html">Nos solutions</a>
+        <a href="offres.html">Nos offres</a>
+        <a href="about.html">Qui sommes-nous</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn-gold nav-cta">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====================== HERO ====================== -->
+  <section class="hero" data-screen-label="01 Hero accueil">
+    <div class="container hero__grid">
+      <div class="hero__copy" data-reveal>
+        <span class="eyebrow">Conseil en gestion de patrimoine</span>
+        <h1 class="h-display">Bâtissez un patrimoine à la hauteur de vos ambitions.</h1>
+        <p class="lede">Une approche à 360°, indépendante et sur-mesure pour structurer, développer et transmettre votre patrimoine — en toute sérénité.</p>
+        <div class="hero__ctas">
+          <a href="contact.html" class="btn btn-gold btn-arrow">Prendre rendez-vous</a>
+          <a href="offres.html" class="btn btn-outline btn-arrow">Découvrir nos offres</a>
+        </div>
+        <div class="hero__meta">
+          <div class="hero__meta-item">
+            <span class="num">360°</span>
+            <span class="lbl">Approche globale</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="num">CIF</span>
+            <span class="lbl">Conseiller indépendant</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="num">1er&nbsp;RDV</span>
+            <span class="lbl">Offert et sans engagement</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual" data-reveal>
+        <div class="frame-deco" aria-hidden="true"></div>
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Conseil patrimonial" onerror="this.parentElement.querySelector('.placeholder').style.display='flex'; this.style.display='none';" />
+        <div class="placeholder" style="display:none; position:absolute; inset:0;">Photo lifestyle<br/>à insérer ici<br/>(famille, conseil, Provence)</div>
+        <div class="hero__badge">
+          <div class="hero__badge-dot"></div>
+          <span><strong>Premier rendez-vous offert</strong><br/>Échange de 45 min sans engagement</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== TRUST STRIP ====================== -->
+  <div class="trust-strip">
+    <div class="container trust-strip__inner">
+      <div class="trust-item"><span class="label">Immatriculation</span><span class="value">ORIAS 23007720</span></div>
+      <div class="trust-item"><span class="label">Statut</span><span class="value">CIF · COA · IOBSP</span></div>
+      <div class="trust-item"><span class="label">Carte pro</span><span class="value">Transaction immobilière</span></div>
+      <div class="trust-item"><span class="label">Localisation</span><span class="value">Salon-de-Provence</span></div>
+    </div>
+  </div>
+
+  <!-- ====================== APPROACH (4 ÉTAPES) ====================== -->
+  <section class="approach" data-screen-label="02 Approche 360">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Notre méthode</span>
+        <h2 class="h-1">Une approche à 360°, en quatre temps.</h2>
+        <p>De la première rencontre au suivi annuel, nous structurons votre patrimoine avec rigueur et pédagogie.</p>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal>
+          <h3>Écoute</h3>
+          <p>Nous prenons le temps de comprendre votre situation, vos projets et vos préoccupations.</p>
+        </div>
+        <div class="step" data-reveal>
+          <h3>Audit</h3>
+          <p>Analyse complète de vos actifs, fiscalité, protection sociale et transmission.</p>
+        </div>
+        <div class="step" data-reveal>
+          <h3>Stratégie</h3>
+          <p>Préconisations écrites, chiffrées et personnalisées, validées ensemble.</p>
+        </div>
+        <div class="step" data-reveal>
+          <h3>Suivi</h3>
+          <p>Mise en œuvre et accompagnement dans la durée, avec point annuel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== SOLUTIONS (4 PILIERS) ====================== -->
+  <section data-screen-label="03 Piliers solutions">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Nos solutions</span>
+        <h2 class="h-1">Quatre piliers pour un patrimoine équilibré.</h2>
+        <p>Notre indépendance nous permet de sélectionner pour vous les meilleurs partenaires du marché.</p>
+      </div>
+      <div class="pillars">
+        <a href="solutions.html#epargne" class="pillar" data-reveal>
+          <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Épargne & Placements</h3>
+          <p>Assurance-vie, comptes-titres, SCPI, allocations pilotées… Une stratégie d'épargne diversifiée et optimisée.</p>
+          <span class="pillar__link">En savoir plus</span>
+        </a>
+        <a href="solutions.html#retraite" class="pillar" data-reveal>
+          <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>Retraite & Prévoyance</h3>
+          <p>Préparer une retraite confortable et protéger ses proches avec des solutions sur-mesure (PER, prévoyance…).</p>
+          <span class="pillar__link">En savoir plus</span>
+        </a>
+        <a href="solutions.html#immobilier" class="pillar" data-reveal>
+          <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2h-4v-7H10v7H6a2 2 0 0 1-2-2z"/></svg></div>
+          <h3>Immobilier</h3>
+          <p>Investissement locatif, LMNP, SCPI, défiscalisation, transaction : nous gérons la chaîne complète.</p>
+          <span class="pillar__link">En savoir plus</span>
+        </a>
+        <a href="solutions.html#fiscalite" class="pillar" data-reveal>
+          <div class="pillar__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+          <h3>Fiscalité & Transmission</h3>
+          <p>Réduction d'impôt, optimisation de la rémunération du dirigeant, donation, transmission familiale.</p>
+          <span class="pillar__link">En savoir plus</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== QUOTE ====================== -->
+  <section class="quote" data-screen-label="04 Quote">
+    <div class="container-narrow">
+      <blockquote data-reveal>
+        Notre métier n'est pas de vendre un produit, mais de bâtir avec vous une stratégie cohérente, claire et durable.
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ====================== CTA BANNER ====================== -->
+  <section data-screen-label="05 CTA">
+    <div class="container">
+      <div class="cta-banner" data-reveal>
+        <div>
+          <h2 class="h-1">Échangeons sur votre projet.</h2>
+          <p>Premier rendez-vous offert, en visio ou à notre cabinet de Salon-de-Provence. 45 minutes pour faire le point et déterminer ensemble les prochaines étapes.</p>
+        </div>
+        <div class="cta-banner__actions">
+          <a href="https://cal.com/pcherriere/tel" target="_blank" rel="noopener" class="btn btn-on-dark btn-arrow">Réserver un créneau</a>
+          <a href="contact.html" class="btn btn-ghost" style="border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.85);">Nous écrire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo-blanc.png" alt="PC Invest 360" />
+          <p>Cabinet indépendant de conseil en gestion de patrimoine. Une approche 360° pour structurer, développer et transmettre votre patrimoine.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer-list">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="solutions.html">Nos solutions</a></li>
+            <li><a href="offres.html">Nos offres</a></li>
+            <li><a href="about.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-list">
+            <li><a href="solutions.html#epargne">Épargne & Placements</a></li>
+            <li><a href="solutions.html#retraite">Retraite & Prévoyance</a></li>
+            <li><a href="solutions.html#immobilier">Immobilier</a></li>
+            <li><a href="solutions.html#fiscalite">Fiscalité & Transmission</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-list">
+            <li>Salon-de-Provence</li>
+            <li><a href="mailto:pc@invest-360.fr">pc@invest-360.fr</a></li>
+            <li><a href="https://cal.com/pcherriere/tel" target="_blank" rel="noopener">Prendre rendez-vous</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>© <span data-year></span> PC Invest 360 · SIREN 980 133 490 · ORIAS 23007720</span>
+        <span><a href="mentions-legales.html">Mentions légales</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js"></script>
+  <script>
+    (async () => {
+      try {
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+        // Wait for hero image to load (or fail) so it appears in the PDF
+        const heroImg = document.querySelector('.hero__visual img');
+        if (heroImg && !heroImg.complete) {
+          await new Promise(resolve => {
+            heroImg.addEventListener('load', resolve, { once: true });
+            heroImg.addEventListener('error', resolve, { once: true });
+            setTimeout(resolve, 3000);
+          });
+        }
+        // Reveal everything in case reveal observer hasn't fired
+        document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
+        setTimeout(() => window.print(), 500);
+      } catch (e) {
+        setTimeout(() => window.print(), 800);
+      }
+    })();
+  </script>
+</body>
+</html>

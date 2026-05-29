@@ -1,0 +1,73 @@
+{
+  "tiers": [
+    {
+      "id": "essentiel",
+      "name": "L'essentiel",
+      "tagline": "Pour démarrer simplement, 100% dématérialisé",
+      "price": "Offert",
+      "priceNote": "Sans engagement",
+      "highlight": false,
+      "features": [
+        "Analyse de votre situation patrimoniale",
+        "Recommandations personnalisées à distance",
+        "Mise en place des contrats d'épargne adaptés",
+        "Suivi annuel de vos placements",
+        "Échanges par mail",
+        "100 % en ligne — France et DROM-COM"
+      ],
+      "cta": {
+        "label": "Démarrer gratuitement",
+        "type": "contact",
+        "url": "contact.html?sujet=essentiel"
+      }
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "tagline": "Accompagnement complet, sur-mesure",
+      "price": "480 €",
+      "priceNote": "Paiement en deux fois\nÉligible crédit d'impôt de 120 € (sous conditions)",
+      "highlight": true,
+      "badge": "Le plus choisi",
+      "features": [
+        "R1 — Rendez-vous d'analyse approfondie de votre situation",
+        "Rapport de Conseils personnalisé",
+        "R2 — Présentation du rapport et validation de la stratégie",
+        "Mise en place des solutions d'investissement",
+        "Suivi annuel inclus (un RDV d'une heure)"
+      ],
+      "cta": {
+        "label": "Souscrire — 480 €",
+        "type": "stripe",
+        "stripeUrl": "REPLACE_WITH_STRIPE_PAYMENT_LINK",
+        "fallbackUrl": "contact.html?sujet=premium"
+      }
+    },
+    {
+      "id": "abonnement",
+      "name": "Abonnement",
+      "tagline": "Pour rester accompagné dans la durée",
+      "price": "9 €",
+      "priceUnit": "/ mois",
+      "priceAlt": "ou 90 € / an (paiement unique)",
+      "priceNote": "Sans engagement",
+      "highlight": false,
+      "features": [
+        "2 RDV annuels pour faire le point et adapter votre stratégie",
+        "Espace personnel pour suivre vos investissements",
+        "Vos questions traitées en priorité",
+        "Assurance-vie et PER : 0 % de frais d'entrée",
+        "Accès anticipé à des offres et événements réservés aux membres"
+      ],
+      "cta": {
+        "label": "S'abonner",
+        "type": "stripe-dual",
+        "monthlyLabel": "9 € / mois",
+        "yearlyLabel": "90 € / an\n(2 mois offerts)",
+        "stripeUrlMonthly": "REPLACE_WITH_STRIPE_MONTHLY_LINK",
+        "stripeUrlYearly": "REPLACE_WITH_STRIPE_YEARLY_LINK",
+        "fallbackUrl": "contact.html?sujet=abonnement"
+      }
+    }
+  ]
+}
