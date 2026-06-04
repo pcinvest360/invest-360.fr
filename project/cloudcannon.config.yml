@@ -1,0 +1,17 @@
+collections_config:
+  pages:
+    path: ''
+    glob:
+      - '*.html'
+    _enabled_editors:
+      - visual
+      - source
+    output: true
+
+data_config:
+  offers:
+    path: data/offers.json
+
+paths:
+  uploads: uploads
+  static: ''
